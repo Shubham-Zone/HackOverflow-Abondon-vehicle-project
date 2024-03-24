@@ -18,7 +18,6 @@ Welcome to the HackOverflow Abandoned Vehicle Reporting System repository! This 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ---
@@ -77,7 +76,7 @@ Contributions are welcome! If you would like to contribute to this project, plea
 
 ## Contact
 
-For inquiries or support, please contact [Your Name](mailto:devshubham652@gmail.com).
+For inquiries or support, please contact [Shubham kumar](mailto:devshubham652@gmail.com).
 
 ---
 

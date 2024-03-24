@@ -75,20 +75,9 @@ Contributions are welcome! If you would like to contribute to this project, plea
 
 ---
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
 ## Contact
 
-For inquiries or support, please contact [Your Name](mailto:youremail@example.com).
-
-<div align="center">
-  <img src="https://yourlogo.png" alt="HackOverflow Abandoned Vehicle Reporting System Logo">
-</div>
+For inquiries or support, please contact [Your Name](mailto:devshubham652@gmail.com).
 
 ---
 
-Feel free to further customize the README according to your project's specific needs or add any additional sections as necessary.

@@ -8,7 +8,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
 import 'package:image_picker/image_picker.dart';
-const kGoogleApiKey = "AIzaSyCZv0YWrLWPnJZk5PzYVz3c96jJHRZXDbU";
+const kGoogleApiKey = "YOUR_GOOGLE_MAPS_API_KEY";
 
 class CriminalCars extends StatefulWidget {
   const CriminalCars({super.key});

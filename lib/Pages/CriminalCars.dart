@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:abondon_vehicle/Mongodb/MongoProvider.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +9,14 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
 import 'package:image_picker/image_picker.dart';
+<<<<<<< HEAD
+import 'package:mongo_dart/mongo_dart.dart' as mongo;
+import 'package:provider/provider.dart';
+
+const kGoogleApiKey = "AIzaSyCZv0YWrLWPnJZk5PzYVz3c96jJHRZXDbU";
+=======
 const kGoogleApiKey = "YOUR_GOOGLE_MAPS_API_KEY";
+>>>>>>> 63423dec82beb753a00abf0755d35d07c2adf881
 
 class CriminalCars extends StatefulWidget {
   const CriminalCars({super.key});
@@ -207,7 +215,7 @@ class _CriminalCarsState extends State<CriminalCars> {
   }
 
   // Function to submit report
-  void submitReport() async {
+  void submitReport(BuildContext context) async {
     //unique id
     String uniqueFileName = DateTime
         .now()
@@ -241,25 +249,33 @@ class _CriminalCarsState extends State<CriminalCars> {
       }
     }
 
-    Map<String, String> data = {
+    final mongoProvider = Provider.of<MongoProvider>(context, listen: false);
 
-      "ImageUrl": imageUrl,
-      "Location": carLoc.text,
-      "Lang": lang.toString(),
-      "Lat": lat.toString(),
-      "Suggestion": suggestion.text,
-      "CarNo": carNo
+    Map<String, String> data = {
+      "_id":mongo.ObjectId().oid,
+      "imageUrl": imageUrl,
+      "location": carLoc.text,
+      "lang": lang.toString(),
+      "lat": lat.toString(),
+      "suggestion": suggestion.text,
+      "carNo": carNo
     };
 
-    rto.push().set(data);
+    mongoProvider.setReport(data);
 
     setState(() {
-      _image = File('');
+      _image=File("");
     });
+
+    // rto.push().set(data);
+    if(mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text(" Reports Submitted Successfuly")));
+
   }
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Report Abandoned Car'),
@@ -334,7 +350,7 @@ class _CriminalCarsState extends State<CriminalCars> {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: submitReport,
+                onPressed: () => submitReport(context),
                 child: const Text('Submit Report'),
               ),
             ],

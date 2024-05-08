@@ -1,6 +1,9 @@
 import 'package:abondon_vehicle/Pages/CriminalCars.dart';
+import 'package:abondon_vehicle/Pages/Reports.dart';
 import 'package:abondon_vehicle/Pages/Rto_Admin.dart';
 import 'package:flutter/material.dart';
+
+import '../Mongodb/UserData.dart';
 
 class NavBar extends StatefulWidget {
 
@@ -20,7 +23,7 @@ class _NavBarState extends State<NavBar> {
   // List of pages
   List pages = [
     const CriminalCars(),
-    const RtoAdmin()
+    const Reports()
 
   ];
 

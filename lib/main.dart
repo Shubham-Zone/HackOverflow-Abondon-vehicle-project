@@ -1,9 +1,15 @@
+import 'package:abondon_vehicle/Mongodb/MongoProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'package:abondon_vehicle/Helpers/NavBar.dart';
 
 void main() async{
+
+  // Connect to MongoDB
+  await MongoProvider().connectToMongo();
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -17,14 +23,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Abondoned Vehicle',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (context) => MongoProvider(),
+      child: MaterialApp(
+        title: 'Abondoned Vehicle',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
+          useMaterial3: true,
+        ),
+        home: const NavBar(idx: 0,)
       ),
-      home: const NavBar(idx: 0,)
     );
   }
 
